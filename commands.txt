@@ -1,0 +1,4 @@
+npm pack
+npm config list
+npm link
+npm publish

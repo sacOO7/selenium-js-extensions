@@ -1,0 +1,36 @@
+{
+  "name": "selenium-extensions",
+  "version": "1.0.0",
+  "description": "Selenium JS bindings to mitigate flaky tests behaviour",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sacOO7/selenium-js-extensions.git"
+  },
+  "keywords": [
+    "selenium",
+    "browser-automation",
+    "e2e-testing",
+    "extensions"
+  ],
+  "author": {
+    "name": "sachin shinde",
+    "email": "sachinshinde7676@gmail.com",
+    "url": "https://github.com/sacOO7"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sacOO7/selenium-js-extensions/issues"
+  },
+  "homepage": "https://github.com/sacOO7/selenium-js-extensions#readme",
+  "dependencies": {
+    "@types/selenium-webdriver": "^4.0.9",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
