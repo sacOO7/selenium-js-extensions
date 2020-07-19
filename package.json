@@ -1,7 +1,7 @@
 {
   "name": "selenium-extensions",
   "version": "1.0.0",
-  "description": "Selenium JS bindings to mitigate flaky tests behaviour",
+  "description": "Selenium JS bindings for executing stable user actions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
