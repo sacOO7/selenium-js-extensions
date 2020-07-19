@@ -2,3 +2,4 @@
 node_modules/
 commands.txt
 tests/
+jest.config.js
