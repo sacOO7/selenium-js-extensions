@@ -15,6 +15,18 @@
 ```
 
 ## Usage
+- Import library, start using extensions as a part of original selenium implementation. 
+
+```javascript
+  import 'selenium-extensions';
+```
+
+or ES5
+
+```javascript
+   require('selenium-extensions');
+```
+- Once imported, following methods can be used on native selenium **WebDriver** and **WebElement** classes.
 
 1. WebDriver -  
 - **findElementSafe(locator, timeout)** - Locate element from the dom, passing selenium locator object, returns WebElementPromise 
