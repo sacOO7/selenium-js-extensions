@@ -4,4 +4,5 @@
 npm pack
 npm config list
 npm link
+npm login
 npm publish

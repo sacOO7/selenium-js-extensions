@@ -53,11 +53,13 @@ function clickElementForced(this: WebElement, timeout = 20000): Promise<any> {
 }
 
 function findElementSafeWebElement(this: WebElement, locator: Locator, timeout = 20000): WebElementPromise {
-    return this.getDriver().wait(until.elementLocated(locator), timeout);
+    return <WebElementPromise>this.getDriver().wait(until.elementIsVisible(this), timeout)
+        .then((ele) => ele.findElement(locator));
 }
 
 function findElementsSafeWebElement(this: WebElement, locator: Locator, timeout = 20000): Promise<WebElement[]> {
-    return this.getDriver().wait(until.elementsLocated(locator), timeout);
+    return this.getDriver().wait(until.elementIsVisible(this), timeout)
+        .then((ele) => ele.findElements(locator));
 }
 
 function getTextSafeSafeWebElement(this: WebElement, timeout = 20000): Promise<string> {

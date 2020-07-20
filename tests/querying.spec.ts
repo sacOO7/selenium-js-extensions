@@ -3,7 +3,7 @@ import { Builder, By, ThenableWebDriver } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { cypressKitchenSinkUrls } from './config'
 
-describe("Visit cypress kitchen sink", () => {
+describe("Visit cypress kitchen sink", async () => {
 
     jest.setTimeout(20000);
     let browser: ThenableWebDriver;
@@ -22,8 +22,11 @@ describe("Visit cypress kitchen sink", () => {
         await browser.quit();
     });
 
-    it('should put data in forms', async () => {
+    it('should check for list length', async () => {
         await browser.get(cypressKitchenSinkUrls.querying);
+        const queryContainer = await browser.findElementSafe(By.className("query-list"));
+        const list = await queryContainer.findElementsSafe(By.tagName("li"));
+        expect(list.length).toBe(4);
     });
 })
 
