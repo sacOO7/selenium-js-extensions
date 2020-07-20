@@ -26,6 +26,14 @@ or ES5
 ```javascript
    require('selenium-extensions');
 ```
+
+-  Update **types** section in **tsconfig.json**
+
+```editorconfig
+  "compilerOptions": {
+        "types": ["selenium-extensions"]
+    }
+```
 - Once imported, following methods can be used on native selenium **WebDriver** and **WebElement** classes.
 
 1. WebDriver -  
