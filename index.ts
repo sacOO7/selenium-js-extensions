@@ -8,12 +8,11 @@ import {
 
 declare module 'selenium-webdriver' {
 
-    // tslint:disable-next-line:interface-name
     interface WebDriver {
         findElementSafe : (this: WebDriver, locator: Locator, timeout?: number) => WebElementPromise;
         findElementsSafe : (this: WebDriver, locator: Locator, timeout?: number) => Promise<WebElement[]>;
     }
-    // tslint:disable-next-line:interface-name
+
     interface WebElement {
         clickSafe: (this: WebElement, timeout?: number) => Promise<void>;
         findElementSafe : (this: WebElement, locator: Locator, timeout?: number) => WebElementPromise;
@@ -48,7 +47,6 @@ function sendKeysSafe(this: WebElement, ...var_args: Array<number | string | Pro
         .then((_) => scrollIntoView(this) && this.sendKeys(...var_args));
 }
 
-// todo: Need to remove this method later on, make clickElementSafe more stable to use
 function clickElementForced(this: WebElement, timeout = 20000): Promise<any> {
     return this.getDriver().wait(until.elementIsVisible(this), timeout)
         .then((_) => clickForced(this));
@@ -67,26 +65,23 @@ function getTextSafeSafeWebElement(this: WebElement, timeout = 20000): Promise<s
         .then(() => this.getText());
 }
 
-
-// @ts-ignore
 WebDriver.prototype.findElementSafe = findElementSafeWebDiver;
-// @ts-ignore
-WebDriver.prototype.findElementsSafe = findElementsSafeWebDiver;
-// @ts-ignore
-WebElement.prototype.clickSafe = clickElementSafe;
-// @ts-ignore
-WebElement.prototype.findElementSafe = findElementSafeWebElement;
-// @ts-ignore
-WebElement.prototype.findElementsSafe = findElementsSafeWebElement;
-// @ts-ignore
-WebElement.prototype.clickForced = clickElementForced;
-// @ts-ignore
-WebElement.prototype.getTextSafe = getTextSafeSafeWebElement;
-// @ts-ignore
-WebElement.prototype.sendKeysSafe = sendKeysSafe;
-// @ts-ignore
-WebElement.prototype.sendKeysForced = sendKeysForced;
 
+WebDriver.prototype.findElementsSafe = findElementsSafeWebDiver;
+
+WebElement.prototype.clickSafe = clickElementSafe;
+
+WebElement.prototype.findElementSafe = findElementSafeWebElement;
+
+WebElement.prototype.findElementsSafe = findElementsSafeWebElement;
+
+WebElement.prototype.clickForced = clickElementForced;
+
+WebElement.prototype.getTextSafe = getTextSafeSafeWebElement;
+
+WebElement.prototype.sendKeysSafe = sendKeysSafe;
+
+WebElement.prototype.sendKeysForced = sendKeysForced;
 
 function isElementClickable(element: WebElement) {
     const SCRIPT = `
@@ -154,3 +149,5 @@ function scrollIntoView(element: WebElement) {
     `;
     return element.getDriver().executeScript(SCRIPT, element);
 }
+
+export { WebDriver, WebElement, WebElementPromise, Locator }
